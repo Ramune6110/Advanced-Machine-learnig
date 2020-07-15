@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[16]:
+# In[20]:
 
 
 # requirement
@@ -17,13 +17,13 @@ class Linear_regression:
         # 説明変数の数
         self.d = 300
         # 値のある説明変数の数
-        self.number = 50
+        self.number = 20
         # X : n * d
         self.xtrain = np.random.randn(self.n, self.d)
         # 説明変数の数は最初のnumber個だけが値を持ち, 残りd - number個は0 : サイズd * 1
         self.w = np.vstack([np.random.randn(self.number, 1) + 3, np.zeros((self.d - self.number, 1))])
         # ノイズ
-        sigma = 0.2
+        sigma = 0.5
         # 目的変数:n * 1
         self.ytrain = np.dot(self.xtrain, self.w) + np.random.randn(self.n, 1) * sigma
         # test data
@@ -93,7 +93,7 @@ class Linear_regression:
         plt.legend()
         # Lasso param estimate
         plt.figure(4)
-        # plt.plot(self.w_lasso, 'r-', linewidth = 1.5, label = "estimate")
+        plt.plot(self.w_lasso.value, 'r-', linewidth = 1.5, label = "estimate")
         plt.plot(self.w, 'b-', label = "true");
         plt.xlabel("Index")
         plt.ylabel("w")
