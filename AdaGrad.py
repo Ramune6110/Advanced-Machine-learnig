@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[22]:
+# In[24]:
 
 
 # requirement
@@ -33,7 +33,7 @@ class AdaGrad:
         for i in range(len(self.w_1)):
             for j in range(len(self.w_2)):
                 w = np.vstack([self.w_1[i], self.w_2[j]])
-                self.Value[i, j] = np.dot(np.dot((w - self.mu).T, self.A), w - self.mu)    
+                self.Value[i, j] = np.dot(np.dot((w - self.mu).T, self.A), w - self.mu) + self.lamda * (np.abs(self.w_1[i]) + np.abs(self.w_2[j]))
                 
     def proximal_operation(self, mu, q):
         x_projection = np.zeros(mu.shape)
